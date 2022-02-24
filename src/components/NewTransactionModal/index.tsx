@@ -3,7 +3,8 @@ import Modal from 'react-modal';
 import closeImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
+import { api } from '../../services/api';
 interface ModalProps  {
     isOpen: boolean;
     onRequestClose: () => void;
@@ -13,9 +14,23 @@ interface ModalProps  {
 export function NewTransactionModal({isOpen, onRequestClose}: ModalProps){
 
     const [type, setType] = useState('deposit');
+    const [value, setValue] = useState(0);
+    const [category, steCategory] = useState('');
+    const [title, setTitle] = useState('');
 
-    
+    function handleCreateNewTransactino(event: FormEvent){
+        event.preventDefault();
 
+    }
+
+    const data = {
+        title, 
+        value,
+        category,
+        type,
+    };
+
+    api.post('/transactions', data)
     return (
         <Modal 
         isOpen={isOpen}
@@ -29,14 +44,18 @@ export function NewTransactionModal({isOpen, onRequestClose}: ModalProps){
             >
             <img src={closeImg} alt="" />
             </button>
-            <M.Container>
+            <M.Container onSubmit={handleCreateNewTransactino}>
             <h2>Cadastrar transação</h2>
             <input
             placeholder="Título"
+            value={title}
+            onChange={event => setTitle(event.target.value)}
             />
             <input
             type="number"
             placeholder="Valor"
+            value={value}
+            onChange={event => setValue(Number(event.target.value))}
             />
             <M.TransactionTypeContainer>
                 <M.RadioBox
@@ -60,6 +79,8 @@ export function NewTransactionModal({isOpen, onRequestClose}: ModalProps){
             </M.TransactionTypeContainer>
             <input
             placeholder="Categoria"
+            value={category}
+            onChange={event => steCategory(event.target.value)}
             />
             <button type='submit'>Cadastrar</button>
             
