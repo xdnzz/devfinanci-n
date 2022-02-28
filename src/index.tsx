@@ -16,16 +16,8 @@ seeds(server){
       {
         id: 1,
         title: 'Freelance WebSite',
-        type: 'Deposit',
+        type: 'deposit',
         category: 'Dev',
-        amount: 6000,
-        createdAt: new Date('2022-01-01')
-      },
-      {
-        id: 2,
-        title: 'Comrpa Elden Ring',
-        type: 'withdraw',
-        category: 'Gamee',
         amount: 6000,
         createdAt: new Date('2022-01-01')
       },
