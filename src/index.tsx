@@ -19,16 +19,16 @@ seeds(server){
         type: 'Deposit',
         category: 'Dev',
         amount: 6000,
-        createdAt: new Date('2021-02-12 08:00:00')
+        createdAt: new Date('2022-01-01')
       },
       {
         id: 2,
-        title: 'luguel',
+        title: 'Comrpa Elden Ring',
         type: 'withdraw',
-        category: 'Casa',
-        amount: 1100,
-        createdAt: new Date("2021-08-31 17:00:00")
-      }
+        category: 'Gamee',
+        amount: 6000,
+        createdAt: new Date('2022-01-01')
+      },
     ],
   })
  

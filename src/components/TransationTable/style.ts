@@ -28,11 +28,11 @@ table {
             color: var(--text-title);
         }
 
-        &.withDraw {
+        &.withdraw {
             color: var(--red);
         }
 
-        &.deposit {
+        &.Deposit {
             color: var(--green);
         }
     }

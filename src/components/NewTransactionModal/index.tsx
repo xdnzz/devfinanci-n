@@ -18,19 +18,20 @@ export function NewTransactionModal({isOpen, onRequestClose}: ModalProps){
     const [category, steCategory] = useState('');
     const [title, setTitle] = useState('');
 
-    function handleCreateNewTransactino(event: FormEvent){
+    function handleCreateNewTransaction(event: FormEvent){
         event.preventDefault();
-
+        const data = {
+            title, 
+            value,
+            category,
+            type,
+        };
+        api.post('/transactions', data)
     }
 
-    const data = {
-        title, 
-        value,
-        category,
-        type,
-    };
+  
 
-    api.post('/transactions', data)
+    
     return (
         <Modal 
         isOpen={isOpen}
@@ -41,10 +42,11 @@ export function NewTransactionModal({isOpen, onRequestClose}: ModalProps){
             <button 
             className='react-modal-close'
             type="button"
+            onClick={onRequestClose}
             >
             <img src={closeImg} alt="" />
             </button>
-            <M.Container onSubmit={handleCreateNewTransactino}>
+            <M.Container onSubmit={handleCreateNewTransaction}>
             <h2>Cadastrar transação</h2>
             <input
             placeholder="Título"
